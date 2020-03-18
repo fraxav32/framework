@@ -1,4 +1,4 @@
-package dataProvider;
+package util;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,14 +8,14 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-
+import constant.ProjectConstent;
 
 
 public class ConfigFileReader {
 	 
 	 private Properties properties;
-	 private final String propertyFilePath= "/framework/src/main/resources/config/Configuation.properties";
-	 Logger log = Logger.getLogger(ConfigFileReader.class);
+	 private final String propertyFilePath= ProjectConstent.USER_DIRECTORY_CONFIG+"//Configuation.properties";
+	 private Logger log = Logger.getLogger(ConfigFileReader.class);
 	 
 	 public ConfigFileReader(){
 	 BufferedReader reader;
@@ -32,24 +32,6 @@ public class ConfigFileReader {
 	 e.printStackTrace();
 	 throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
 	 } 
-	 }
-	 
-	 public String getDriverPath(String browser){
-	 String driverPath=null;
-	 switch(browser){
-	 case "chrome": driverPath = properties.getProperty("chrome");
-	 				break;
-	 				
-	 case "fireFox": driverPath = properties.getProperty("fireFox");
-					break;
-					
-	 case "internetExplorer": driverPath = properties.getProperty("internetExplorer");
-					break;
-	 }
-	 if(driverPath!= null) {
-		 return driverPath;
-	 }
-	 else throw new RuntimeException("driverPath not specified in the Configuration.properties file."); 
 	 }
 	 
 	 public long getImplicitlyWait() { 

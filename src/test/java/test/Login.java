@@ -20,7 +20,7 @@ public class Login extends TestBase{
 	private List<Object> gponData = new ArrayList<>();
 	private DataJSONReader jsonDataProvider;
 	private Class classToMap = LoginPageData.class;
-	Logger log = Logger.getLogger(Login.class);
+	private Logger logger = Logger.getLogger(Login.class);
 	@Test
 	public void testLogin(){
 		boolean istestLogin = false;
@@ -31,7 +31,7 @@ public class Login extends TestBase{
 			}
 			
 		}catch(Exception e){
-			log.error("Unable to Login to the Application", e);
+			logger.error("Unable to Login to the Application", e);
 		}
 		Assert.assertTrue(istestLogin, "Login Test Passed");
 	}
